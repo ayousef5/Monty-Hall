@@ -1,0 +1,54 @@
+import java.util.Scanner;
+
+public class MontyHall
+{
+    public static void main(String[] args)
+    {
+        
+        // Pick a random door: 1, 2, or 3
+        int prizeDoor = (int) (Math.random() * 3 + 1);
+        
+        
+        
+        // Prompt the user for a door (int)
+        Scanner input = new Scanner(System.in);
+        System.out.println("Welcome to Let's Make a Deal!");
+        System.out.print("Pick a door, 1, 2, or 3:");
+        int userChoice = input.nextInt();
+        
+        // Open one of the other doors (see exercise notes)
+        int doortoOpen = (int) (Math.random() * 3 + 1);
+        
+        while (doortoOpen == prizeDoor || doortoOpen == userChoice)
+        {
+            doortoOpen = (int) (Math.random() * 3 + 1);
+        }
+        
+        System.out.println("You picked door " + userChoice);
+        System.out.println("I opened door " + doortoOpen);
+        // Prompt the user to see if they want to switch their
+        // door choice (boolean)
+        System.out.println("Switch doors (true or false):");
+        boolean switchDoors = input.nextBoolean();
+        
+        int switchDoor = (int) (Math.random() * 3 + 1);;
+        if (switchDoors)
+        
+        {
+            
+            while (switchDoor == userChoice || switchDoor == doortoOpen){
+                switchDoor = (int) (Math.random() * 3 + 1);
+                
+            }
+            userChoice = switchDoor;
+            System.out.println("You switched to door" + userChoice);
+        }
+        // Print out either: You win! or Sorry, you lose.
+        if (userChoice == prizeDoor){
+            System.out.println("You win!");
+        }
+        else{
+            System.out.println("Sorry, you lose.");
+        }
+    }
+}
