@@ -1,0 +1,77 @@
+public class MontyHall
+{
+    public static void main(String[] args)
+    {
+        // Add code here to execute your simulator thousands
+        // of times and print out the percent true
+int simulationWins = 0;
+for (int i = 0; i < 10000; i++){
+    if (runSim(true)){
+        simulationWins++;
+    }
+    }
+    int simulationswinnoSwitch = 0;
+    for (int i = 0; i < 10000; i++){
+        if (runSim(false)){
+            simulationswinnoSwitch++;
+        
+        }
+    }
+    double percentwinsSwitch = (double) simulationWins/ 100;
+    double percentwinsnoSwitch = (double) simulationswinnoSwitch /100;
+    System.out.println("Switch? false");
+    System.out.println(percentwinsnoSwitch +"%");
+    System.out.println("Switch? true");
+    System.out.println(percentwinsSwitch +"%");
+    }
+    /*
+     * This method returns true if the picked door matches
+     * the prize door. Both picked door and prize door are randomly
+     * selected, however if switchDoor is true, the contestant
+     * will switch to the other door after the first door is
+     * revealed.
+     */
+    public static boolean runSim(boolean switchDoors){
+           int prizeDoor = (int) (Math.random() * 3 + 1);
+        
+        
+        
+        // Prompt the user for a door (int)
+       int userChoice = (int) (Math.random() * 3 + 1);
+        
+        // Open one of the other doors (see exercise notes)
+        int doortoOpen = (int) (Math.random() * 3 + 1);
+        
+        while (doortoOpen == prizeDoor || doortoOpen == userChoice)
+        {
+            doortoOpen = (int) (Math.random() * 3 + 1);
+        }
+        
+
+        // Prompt the user to see if they want to switch their
+        // door choice (boolean)
+
+
+        
+        int switchDoor = (int) (Math.random() * 3 + 1);;
+        if (switchDoors)
+        
+        {
+            
+            while (switchDoor == userChoice || switchDoor == doortoOpen){
+                switchDoor = (int) (Math.random() * 3 + 1);
+                
+            }
+            userChoice = switchDoor;
+    
+        }
+        // Print out either: You win! or Sorry, you lose.
+        if (userChoice == prizeDoor){
+   return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+}
